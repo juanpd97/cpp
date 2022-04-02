@@ -1,0 +1,33 @@
+#include <iostream>
+using namespace std;
+
+/*
+Ejercicio 8: Escribir una función que reciba un puntero a un arreglo de números y retorne el mayor.
+Resolver utilizando aritmética de punteros.
+*/
+
+int mayor(int *x);
+int main() {
+	
+	int y[]={1,2,3,5,4,2,3,8,4,1};
+	//int *x;
+	//x = &y[0];
+	//cout << mayor(x) << endl;
+	
+	cout << "mayor numero: " << mayor(&y[0]);
+	
+	return 0;
+}
+
+int mayor(int *x){
+	
+	int r=0;
+	
+	for(int i=0; i<10 ; i++){
+		if( *(x+i) > r){
+			r = *(x+i);
+		}
+	}
+	
+	return r;
+}

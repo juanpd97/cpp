@@ -1,0 +1,37 @@
+#include <iostream>
+using namespace std;
+
+/*
+Ejercicio 2 : Para cada uno de los siguientes enunciados, escriba el código correspondiente. Suponer que
+se han declarado las siguientes variables:
+float num1 = 3.1415926, num2 = 0.12345;
+(a) Declarar un puntero a float pnum.
+(b) Asignar la dirección de la variable num1 a pnum.
+(c) Imprimir el valor de la variable apuntada por pnum.
+(d) Asignar el valor de la variable apuntada por pnum a la variable num2.
+(e) Imprimir el valor de num2.
+(f) Imprimir la dirección de num2 y la dirección almacenada en pnum. ¿Es la misma dirección?
+*/
+int main(int argc, char *argv[]) {
+	
+	
+	
+	float num1 = 3.1415926 , num2 = 0.12345;
+	
+	float *pnum;
+	
+	pnum = &num1;
+	
+	cout << endl;
+	cout << "valor de la variable apuntada por pnum: " << *pnum;
+	
+	num2 = *pnum;
+	
+	cout << endl << "valor de la variable num2: " << num2 << endl;
+	
+	cout << "direccion de la variable pnum: " << pnum << endl << "valor de la dereccion de variable num2: " << &num2;
+	
+	
+	return 0;
+}
+

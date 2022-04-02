@@ -1,0 +1,27 @@
+#include <iostream>
+using namespace std;
+
+/*
+Ejercicio 1: Escribir un programa que pida al usuario que introduzca enteros como entradas para ser
+almacenadas en las variables a y b , respectivamente. También declarar dos punteros enteros denominados
+ptrA y ptrB . Asignar las direcciones de a y b a ptrA y ptrB , respectivamente, y mostrarlos.
+*/
+
+
+int main(int argc, char *argv[]) {
+	
+	typedef int* pint;
+	
+	int a,b;
+	pint ptrA,ptrB;
+	
+	cin >> a >> b;
+	
+	ptrA = &a;
+	ptrB = &b;
+	
+	cout << ptrA <<" " << ptrB << "  " << *ptrA << "  " << *ptrB;
+	
+	return 0;
+}
+

@@ -1,0 +1,25 @@
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+/*
+Ejercicio 3: Declarar un puntero a la cadena de texto "Hola" llamado mensaje . Luego, asignar el valor
+“A” a la tercera letra de una cadena de caracteres apuntada por mensaje.
+*/
+
+int main(int argc, char *argv[]) {
+	
+	string x = "hola";
+	
+	char *a;
+	
+	a = &x[0];
+	
+	cout << x <<  endl;
+	
+	a[3] = 'A';
+	
+	cout << x;
+	return 0;
+}
+

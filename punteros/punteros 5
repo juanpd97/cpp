@@ -1,0 +1,29 @@
+#include <iostream>
+#include <ctime>
+using namespace std;
+
+/*
+Ejercicio 5: Escribir un array de 10 números aleatorios y después un array de 10 punteros donde cada
+uno apunte a los números anteriores.
+*/
+
+int main(int argc, char *argv[]) {
+	
+	srand(time(NULL));
+	
+	int x[10];
+	int *y[10];
+	
+	for(int i=0 ; i<10 ; i++){
+		x[i] = rand();
+		y[i] = &x[i];
+	}
+	
+	for(int i=0 ; i<10 ; i++){
+		cout << "numero x= " << x[i] << endl;
+		cout << "puntero en y= " << y[i] << endl;
+	}
+	
+	return 0;
+}
+

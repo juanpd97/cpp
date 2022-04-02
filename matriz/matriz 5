@@ -1,0 +1,149 @@
+#include <iostream>
+#include <ctime>
+using namespace std;
+
+void llenar(int x[3][3]);
+void mostrar(int x[][3]);
+void es_magico(int x[3][3]);
+int sum_fil(int x[3][3],int f);
+bool filas_ig(int x[3][3]);
+int sum_col(int x[3][3], int c);
+bool col_ig(int x[3][3]);
+int sum_dp(int x[3][3]);
+int sum_ds(int x[3][3]);
+int main(int argc, char *argv[]) {
+	srand(time(NULL));
+	
+	int x[3][3];
+	
+	llenar(x);
+	mostrar(x);
+	cout << endl;
+	es_magico(x);
+	
+	cout << endl << endl;
+	cout << "suma de filas:" << endl;
+	cout << "fila 1: "<< sum_fil(x,0) << endl;
+	cout << "fila 2: "<< sum_fil(x,1) << endl;
+	cout << "fila 3: "<< sum_fil(x,2) << endl;
+	cout << "iguales? :"<< filas_ig(x);
+	
+	cout << endl << endl;
+	cout << "suma de columnas:" << endl;
+	cout << "columna 1: "<< sum_col(x,0) << endl;
+	cout << "columna 2: "<< sum_col(x,1) << endl;
+	cout << "columna 3: "<< sum_col(x,2) << endl;
+	cout << "iguales? :"<< col_ig(x);
+	
+	cout << endl << endl;
+	cout << "suma diagonal principal: " << sum_dp(x);
+	cout << endl;
+	cout << "suma diagonal secundaria: " << sum_ds(x);
+	return 0;
+}
+void es_magico(int x[3][3]){
+	
+	int aux1=sum_col(x,0);
+	int aux2=sum_dp(x);
+	int aux3=sum_ds(x);
+	
+	if(col_ig(x) and filas_ig(x)){
+		if(aux1==aux2 and aux2==aux3){
+			cout << "es un cadrado magico";
+		} 
+	} else
+		cout << "no es cuadrado magico";
+}
+void mostrar(int x[][3]){
+	for(int i=0 ; i<3 ; i++){
+		for(int j=0 ; j<3 ; j++){
+			cout << x[i][j]<< " ";
+		}
+		cout << endl;
+	}
+}
+void llenar(int x[3][3]){
+	for (int i=0 ; i<3 ; i++){
+		for(int j=0 ; j<3 ; j++){
+			cin>>x[i][j];
+			//x[i][j] = rand() %10;
+		}
+	}
+}
+
+int sum_fil(int x[3][3],int f){
+	int rta=0;
+	for(int i=0 ; i<3 ; i++){
+		rta += x[f][i];
+	}
+	return rta;
+}
+
+bool filas_ig(int x[3][3]){
+	int aux=0;
+	int sum=0;
+	bool rta=true;
+	for(int i=0; i<3 ; i++){
+		sum = sum_fil(x,i);
+		if(i==0){
+			aux=sum;
+		}
+		if( (aux == sum) and (rta==true)){
+			sum = 0;
+		} else{
+			rta = false;
+		}
+	}
+	
+	return rta;
+}
+	
+int sum_col(int x[3][3],int c){
+	int sum = 0;
+	
+ 	for(int i=0 ; i<3 ; i++){
+		sum += x[i][c];
+	}
+	return sum;
+}
+	
+bool col_ig(int x[3][3]){
+
+	bool rta = true;
+	int sum = 0 , aux = 0;
+	
+	for(int i=0; i<3 ; i++){
+		sum = sum_col(x,i);
+		
+		if(i == 0){
+			aux = sum;
+		}
+		if(sum == aux and rta == true){
+			sum = 0;
+		} else{
+			rta = false;
+		}
+	}
+	
+	return rta;
+}
+int sum_dp(int x[3][3]){
+	int rta=0;
+	
+	for(int i=0; i<3 ; i++){
+		for(int j=0; j<3 ; j++){
+			if(i==j){
+				rta += x[i][j];
+			}
+		}
+	}
+	
+	return rta;
+	}
+int sum_ds(int x[3][3]){
+	int rta=0;
+	for(int i=0; i<3 ; i++){
+		rta += x[i][2-i];
+	}
+	return rta;
+}

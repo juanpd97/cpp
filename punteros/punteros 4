@@ -1,0 +1,43 @@
+#include <iostream>
+using namespace std;
+
+/*
+Ejercicio 4: Para cada uno de los siguientes enunciados, escriba el código correspondiente.
+(a) Declarar un arreglo de tipo float , llamado número e inicialice los elementos con los siguientes
+valores: {0.1, 0.2, 0.3, 0.4, 0.5}. Suponga que la constante SIZE ha sido definida como 5.
+(b) Declarar un puntero pnum que apunte a una variable de tipo float.
+(c) Imprimir los elementos del arreglo utilizando subíndices de arreglos.
+(d) Idem (c) pero utilizando únicamente la variable pnum.
+(e) Suponiendo que pnum apunta al principio del arreglo, ¿Cuál es la dirección referenciada por
+(pnum+3)? ¿Y su valor?
+(f) Suponiendo que pnum apunta al tercer elemento del arreglo (numero[3]). ¿A qué elemento del arreglo
+apunta ( pnum-2) ?
+*/
+
+int main(int argc, char *argv[]) {
+	
+	float x[]={0.1,0.2,0.3,0.4,.5};
+	float *pnum;
+	
+	pnum = &x[0];
+	
+	for(int i=0; i<5 ; i++){
+		cout << x[i] << " ";
+	}
+	
+	cout << endl;
+	
+	for(int i=0; i<5 ; i++){
+		cout << *(pnum+i) << " ";
+	}
+	
+	
+	cout << endl;
+	cout << "direccion referenciada por pnum: " << pnum+3 << "con valor: " << *(pnum+3) << endl;
+	
+	pnum = &x[3];
+	cout << "pnum apunta a: " << *(pnum-2) << endl;
+	
+	return 0;
+}
+
